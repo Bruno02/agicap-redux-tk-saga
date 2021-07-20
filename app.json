@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "agicap-redux-tk-saga",
+    "slug": "agicap-redux-tk-saga",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "agicap-redux-tk-saga"
+}
