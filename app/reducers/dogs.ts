@@ -1,18 +1,18 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'app/store';
+import { shuffle } from 'lodash';
 
 const NAME = 'dogs';
 
 interface IState {
   loading: boolean;
-  records: string[];
+  records?: string[];
   error?: string;
 }
 
 const initialState: IState = {
   loading: false,
-  records: [],
   error: undefined,
 };
 
@@ -24,7 +24,7 @@ export const slice = createSlice({
       state.loading = true;
     },
     fetchDogsSuccess: (state, action: PayloadAction<string[]>) => {
-      state.records = action.payload;
+      state.records = shuffle(action.payload);
       state.loading = false;
     },
     fetchDogsError: (state, action: PayloadAction<Error>) => {

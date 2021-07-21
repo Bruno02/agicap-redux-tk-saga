@@ -6,13 +6,15 @@ interface IList {
   items: string[];
   onRefresh?: () => void;
   refreshing?: boolean;
+  testID?: string;
 }
 
-const List: React.FC<IList> = ({ items, onRefresh, refreshing = false }: IList) => {
+const List: React.FC<IList> = ({ items, onRefresh, refreshing = false, testID }: IList) => {
   const renderItem = ({ item }: { item: string }) => <Item title={item} />;
 
   return (
     <FlatList
+      testID={testID}
       data={items}
       renderItem={renderItem}
       keyExtractor={(item) => item}
