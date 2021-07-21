@@ -8,7 +8,10 @@ describe('<List />', () => {
   it('has a given element', () => {
     const items = ['one', 'two', 'three', 'four', 'five'];
 
-    const { getByText } = render(<List items={items} testID="testFlatList" />);
-    expect(getByText('three'));
+    const FLAT_LIST_TEST_ID = 'flatListTest';
+
+    const { getByText, getByTestId } = render(<List items={items} testID={FLAT_LIST_TEST_ID} />);
+    expect(getByText(items[4]));
+    expect(getByTestId(FLAT_LIST_TEST_ID).props.data.length).toEqual(items.length);
   });
 });
