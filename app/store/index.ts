@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import reducers from 'app/reducers';
@@ -8,15 +8,12 @@ const IS_DEV = true;
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
-
-if (IS_DEV) {
-  middleware.push(logger);
-}
-
 const store = configureStore({
   reducer: reducers,
-  middleware,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ thunk: false })
+      .concat(sagaMiddleware)
+      .concat(IS_DEV ? logger : []),
   devTools: IS_DEV,
 });
 
