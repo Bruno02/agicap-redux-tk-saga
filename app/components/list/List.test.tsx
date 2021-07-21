@@ -5,7 +5,7 @@ import { render } from '@testing-library/react-native';
 import List from './List';
 
 describe('<List />', () => {
-  it('has a given element', () => {
+  it('List has a given element and get elements count', () => {
     const items = ['one', 'two', 'three', 'four', 'five'];
 
     const FLAT_LIST_TEST_ID = 'flatListTest';
