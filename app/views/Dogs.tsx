@@ -6,6 +6,7 @@ import { List } from 'components/list';
 
 const styles = StyleSheet.create({
   root: {
+    flex: 1,
     width: '100%',
   },
 });
@@ -28,7 +29,7 @@ const Dogs = ({ testID }: IDogs) => {
   return (
     <View style={styles.root}>
       <List
-        items={dogs ?? ['Slide to fetch :)']}
+        items={dogs ?? ['Pull to fetch :)']}
         onRefresh={handleRefresh}
         refreshing={loading}
         testID={testID}
