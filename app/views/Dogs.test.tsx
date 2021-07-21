@@ -10,7 +10,7 @@ import { FETCH_ALL_DOGS_API } from '../sagas/dogs';
 import Dogs from './Dogs';
 
 describe('<Dogs />', () => {
-  it('Dogs has a given element and get elements count', async () => {
+  it('Dogs has a given element and get elements count after refreshing', async () => {
     const items = { affenpinscher: [], african: [], airedale: [], akita: [] };
 
     fetchMock.get(FETCH_ALL_DOGS_API, {
