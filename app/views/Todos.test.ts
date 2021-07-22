@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import 'react-native';
 import { IState } from 'reducers/todos';
 import TodosViewModel from 'reducers/TodosViewModel';
 
