@@ -24,10 +24,15 @@ export const slice = createSlice({
       viewModel.addTodo(action.payload);
       state.todosList = viewModel.todosList;
     },
+    resetTodosList: (state) => {
+      viewModel.state = state;
+      viewModel.resetTodosList();
+      state.todosList = viewModel.todosList;
+    },
   },
 });
 
-export const { addTodo } = slice.actions;
+export const { addTodo, resetTodosList } = slice.actions;
 
 export const selecTodosList = (state: RootState) => state.todos.todosList;
 

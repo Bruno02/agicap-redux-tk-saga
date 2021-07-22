@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, selecTodosList } from 'reducers/todos';
+import { addTodo, selecTodosList, resetTodosList } from 'reducers/todos';
 import { Input } from 'components/input';
 import { List } from 'components/list';
 
@@ -25,6 +25,8 @@ const Todos = () => {
     setText('');
   };
 
+  const handleRefresh = () => dispatch(resetTodosList());
+
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.root}>
       <View style={styles.root}>
@@ -35,7 +37,7 @@ const Todos = () => {
           style={styles.input}
           blurOnSubmit={false}
         />
-        <List items={list} />
+        <List items={list} onRefresh={handleRefresh} />
       </View>
     </KeyboardAvoidingView>
   );

@@ -3,13 +3,17 @@ import { orderBy } from 'lodash';
 import { IState } from './todos';
 
 class TodosViewModel {
-  todosList: string[] = [];
+  private _todosList: string[] = [];
 
-  _state: IState;
+  get todosList() {
+    return this._todosList;
+  }
+
+  private _state: IState;
 
   set state(value: IState) {
     this._state = value;
-    this.todosList = value.todosList;
+    this._todosList = value.todosList;
   }
 
   constructor(state: IState) {
@@ -17,7 +21,11 @@ class TodosViewModel {
   }
 
   addTodo(todo: string): void {
-    this.todosList = orderBy([...this.todosList, todo], [], ['asc']);
+    this._todosList = orderBy([...this.todosList, todo], [], ['asc']);
+  }
+
+  resetTodosList(): void {
+    this._todosList = [];
   }
 }
 
