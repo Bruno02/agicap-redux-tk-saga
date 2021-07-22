@@ -3,7 +3,7 @@ import 'react-native';
 import { IState } from 'reducers/todos';
 import TodosViewModel from 'reducers/TodosViewModel';
 
-describe('<Dogs />', () => {
+describe('<Todos />', () => {
   it('Todos list has given elements and must push them ordered asc', async () => {
     const initialState: IState = {
       todosList: [],
