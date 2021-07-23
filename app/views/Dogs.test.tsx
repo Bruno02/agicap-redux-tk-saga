@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import 'react-native';
 import React from 'react';
-import { keys } from 'lodash';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import fetchMock from 'fetch-mock';
 import { Provider } from 'react-redux';
@@ -11,10 +10,10 @@ import Dogs from './Dogs';
 
 describe('<Dogs />', () => {
   it('Dogs has a given element and get elements count after refreshing', async () => {
-    const items = { affenpinscher: [], african: [], airedale: [], akita: [] };
+    const ITEMS = { affenpinscher: [], african: [], airedale: [], akita: [] };
 
     fetchMock.get(FETCH_ALL_DOGS_API, {
-      message: items,
+      message: ITEMS,
     });
 
     const FLAT_LIST_TEST_ID = 'flatListTest';
@@ -31,10 +30,9 @@ describe('<Dogs />', () => {
     const dogsList = getByTestId(FLAT_LIST_TEST_ID);
     fireEvent(dogsList, 'refresh');
 
-    const itemsMap = keys(items);
     await waitFor(() => {
-      expect(getByText(itemsMap[2]));
-      expect(dogsList.props.data.length).toEqual(itemsMap.length);
+      expect(getByText('airedale'));
+      expect(dogsList.props.data.length).toEqual(4);
     });
 
     // await waitFor(() => {
