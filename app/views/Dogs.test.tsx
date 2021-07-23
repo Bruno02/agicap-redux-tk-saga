@@ -25,7 +25,7 @@ describe('<Dogs />', () => {
     );
     const { getByTestId, getByText } = render(component);
 
-    // expect(getByText('Slide to fetch :)'));
+    expect(getByText('Pull to fetch :)'));
 
     const dogsList = getByTestId(FLAT_LIST_TEST_ID);
     fireEvent(dogsList, 'refresh');
@@ -33,6 +33,9 @@ describe('<Dogs />', () => {
     await waitFor(() => {
       expect(getByText('airedale'));
       expect(dogsList.props.data.length).toEqual(4);
+      expect(dogsList.props.data).toEqual(
+        expect.arrayContaining(['affenpinscher', 'african', 'airedale', 'akita'])
+      );
     });
 
     // await waitFor(() => {
